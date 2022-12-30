@@ -33,16 +33,24 @@ export const EDITOR_JS_TOOLS = {
         config: {
             //  endpoint: 'http://localhost:8008/fetchUrl',
             uploader: {
+
                 uploadByFile(file) {
 
-                    axios.post(
+                    return axios.post(
                         "http://localhost:3200/post/",
                         { img: file }
-                    )
-                        .then((res) => console.log("success, dictionary sent,", res, file))
-                        .catch((err) => {
-                            console.log(err.response);
-                        });
+                    ).then(() => {
+                        return {
+                            success: 1,
+                            file: {
+                                url: 'https://codex.so/upload/redactor_images/o_80beea670e49f04931ce9e3b2122ac70.jpg',
+                            }
+                        };
+                    });
+                    // .then((res) => console.log("success, dictionary sent,", res, file))
+                    // .catch((err) => {
+                    //     console.log(err.response);
+                    // });
 
 
                     // // your own uploading logic here
